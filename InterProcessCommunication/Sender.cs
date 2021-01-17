@@ -22,8 +22,8 @@ namespace InterProcessCommunication
 
         private void button1_Click(object sender, EventArgs e)
         {
-            communicator.write(SendReceiveApp.SENDER, tbToSend.Text);
-            //communicator.sendMessage(tbToSend.Text);
+            //communicator.write(SendReceiveApp.SENDER, tbToSend.Text);
+            communicator.sendMessage(tbToSend.Text);
         }
 
     }
