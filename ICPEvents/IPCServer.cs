@@ -38,18 +38,6 @@ namespace IPC
             {
                 ShowErrorDialog(ex.Message);
             }
-
-
-            // Followed by periods to indicate work.
-            //Console.WriteLine("Listening for connections on port " + port + "...");
-            //clientSocket = serverSocket.Accept();
-            //Console.WriteLine("Client Connected");
-            //Console.WriteLine("Waiting for data...");
-            //buffer = new byte[clientSocket.ReceiveBufferSize];
-            //ReceiveData();
-            //Console.WriteLine("Server loop ended. Press enter to exit.");
-            //Console.ReadLine();
-            //serverSocket.Close();
         }
 
 
@@ -125,54 +113,11 @@ namespace IPC
             }
         }
 
-        /// <summary>
-        /// Provides a thread safe way to add a row to the data grid.
-        /// </summary>
-        //private void SubmitPersonToDataGrid(PersonPackage person)
-        //{
-        //    Invoke((Action)delegate
-        //    {
-        //        dataGridView.Rows.Add(person.Name, person.Age, person.IsMale);
-        //    });
-        //}
 
         private static void ShowErrorDialog(string message)
         {
             MessageBox.Show(message);
         }
-
-
-
-
-
-
-        //private void ReceiveData()
-        //{
-        //    while (clientSocket.Connected)
-        //    {
-        //        int received = clientSocket.Receive(buffer);
-
-        //        if (received == 0) // Assume the client has disconnected.
-        //        {
-        //            //Console.WriteLine("Client Disconnected");
-        //            break;
-        //        }
-
-        //        // Shrink the buffer so we don't get null chars in the text.
-        //        Array.Resize(ref buffer, received);
-        //        string receivedMsg = Encoding.ASCII.GetString(buffer);
-        //        // Reset the buffer.
-        //        Array.Resize(ref buffer, clientSocket.ReceiveBufferSize);
-        //        onDataReceived(receivedMsg);
-        //    }
-
-        //    // Assume the client has disconnected and start listening again for connections.
-        //    //Console.WriteLine("\nListening again...");
-        //    clientSocket = serverSocket.Accept();
-        //    //Console.WriteLine("Client Connected");
-        //    //Console.WriteLine("Waiting for data...");
-        //    ReceiveData();
-        //}
 
         protected virtual void onDataReceived(string receivedMsg)
         {

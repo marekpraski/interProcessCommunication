@@ -17,7 +17,7 @@ namespace IPC
         internal IPCClient(int port)
         {
             this.port = port;
-            //setupClient();
+            setupClient();
         }
 
         private void setupClient()

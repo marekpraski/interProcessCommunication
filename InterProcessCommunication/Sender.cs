@@ -7,7 +7,7 @@ namespace InterProcessCommunication
 {
     public partial class Sender : Form
     {
-        IPCHandler communicator;
+        IPCHandler ipcHandler;
         public Sender()
         {
             InitializeComponent();
@@ -16,14 +16,13 @@ namespace InterProcessCommunication
 
         private void setupThisForm()
         {
-            communicator = new IPCHandler(SendReceiveApp.SENDER);
+            ipcHandler = new IPCHandler(SendReceiveApp.SENDER);
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //communicator.write(SendReceiveApp.SENDER, tbToSend.Text);
-            communicator.sendMessage(tbToSend.Text);
+            ipcHandler.sendMessage(tbToSend.Text);
         }
 
     }
