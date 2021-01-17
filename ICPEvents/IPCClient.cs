@@ -17,14 +17,21 @@ namespace IPC
         internal IPCClient(int port)
         {
             this.port = port;
-            setupClient();
         }
 
-        private void setupClient()
+        internal bool setupClient()
         {
-            clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            // Change IPAddress.Loopback to a remote IP to connect to a remote host.
-            clientSocket.Connect(IPAddress.Loopback, port);
+            try
+            {
+                clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                // Change IPAddress.Loopback to a remote IP to connect to a remote host.
+                clientSocket.Connect(IPAddress.Loopback, port);
+                return true;
+            }
+            catch (SocketException ex)
+            {
+                return false;
+            }
         }
 
         internal bool sendMessage(string message)

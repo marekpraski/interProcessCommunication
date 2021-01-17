@@ -49,8 +49,8 @@ namespace IPC
                 buffer = new byte[clientSocket.ReceiveBufferSize];
 
                 // Send a message to the newly connected client.
-                var sendData = Encoding.ASCII.GetBytes("Hello");
-                clientSocket.BeginSend(sendData, 0, sendData.Length, SocketFlags.None, SendCallback, null);
+                //var sendData = Encoding.ASCII.GetBytes("Hello");
+                //clientSocket.BeginSend(sendData, 0, sendData.Length, SocketFlags.None, SendCallback, null);
                 // Listen for client data.
                 clientSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
                 // Continue listening for clients.
@@ -125,6 +125,8 @@ namespace IPC
             {
                 IPCEventArgs args = new IPCEventArgs();
                 args.data = receivedMsg;
+                buffer = null;
+                buffer = new byte[clientSocket.ReceiveBufferSize];
                 dataReceived(this, args);
             }
         }

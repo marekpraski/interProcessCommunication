@@ -1,4 +1,4 @@
-﻿
+﻿using System.Windows.Forms;
 
 namespace IPC
 {
@@ -32,6 +32,8 @@ namespace IPC
         private void setUpIPCClient()
         {
             this.client = new IPCClient(port);
+            if (!client.setupClient())
+                MessageBox.Show("Brak serwera TCP do kumunikacji IPC");
         }
 
         public bool sendMessage(string message)
